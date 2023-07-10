@@ -9,7 +9,7 @@ const inter = Roboto({
  });
 
 export const metadata = {
-  title: "TotalCareEurope",
+  title: "Welcome To TotalCareEurope",
   description: "TotalCareEurope",
 };
 

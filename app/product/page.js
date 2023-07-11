@@ -5,9 +5,9 @@ import benefit from "@/public/product2.png";
 function page() {
   return (
     <div>
-      <Intro />
-      <div className="px-12 flex flex-wrap gap-10 py-12">
-        <div className="shadow-2xl h-fit p-6">
+      <Intro text="Products" />
+      <div className="md:px-12 px-2 flex flex-wrap gap-10 py-12">
+        <div className="md:w-fit w-full shadow-2xl h-fit p-6">
           <h2 className="text-[#F3B83B] font-medium">PRODUCT CATEGORIES</h2>
           <hr />
           <p className="text-slate-600 py-2">Cosmetics and Personal care</p>
@@ -16,8 +16,8 @@ function page() {
         </div>
         <div>
           <div className="bg-[#F5F5F5] p-3 rounded">
-            <div className="relative">
-              <Image src={benefit} alt="" width={200} height={200} objectFit="contain" className="rounded"/>
+            <div className="relative md:w-[200px] md:h-[200px]">
+              <Image src={benefit} alt="" objectFit="contain" className="rounded"/>
             </div>
             <div>
               <h3 className="text-center">2 TCM ORANGE</h3>

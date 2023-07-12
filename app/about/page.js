@@ -8,11 +8,13 @@ import about from "@/public/product01.jpg";
 function page() {
   return (
     <div className="min-h-screen">
-      <Intro />
-      <div className="px-12 py-8">
+      <Intro text={"About Us"} />
+      <div className="px-12 py-8 text-center">
         <div className="grid grid-cols-fluid">
           <div>
-            <h3 className="text-[#8B7A4F] font-medium text-xl">About Us</h3>
+            <h3 className="text-[#8B7A4F] font-medium text-xl pt-3">
+              ABOUT US
+            </h3>
             <p className="text-slate-600 leading-loose">
               TOTAL CARE company was founded in 2022. the headquaters based in
               lisbon, europe with a registered company office in south africa.
@@ -49,14 +51,16 @@ function page() {
           </div>
           <div>
             <div>
-              <h3 className="text-[#8B7A4F] font-medium text-xl">Mission</h3>
+              <h3 className="text-[#8B7A4F] font-medium text-xl pt-3">
+                MISSION
+              </h3>
               <p className="text-slate-600 leading-loose">
                 To provide the best health and wellness solutions to our
                 worldwide clients consistently.
               </p>
             </div>
-            <div>
-              <h3 className="text-[#8B7A4F] font-medium text-xl">Vision</h3>
+            <div className="mt-6">
+              <h3 className="text-[#8B7A4F] font-medium text-xl">VISION</h3>
               <p className="text-slate-600 leading-loose">
                 To be the most desirable and reliable health, wellness and
                 lifestyle products provider around the globe
@@ -66,15 +70,15 @@ function page() {
         </div>
         <div className="grid grid-cols-fluid">
           <div>
-            <h3 className="text-[#8B7A4F] font-medium text-xl">Values</h3>
+            <h3 className="text-[#8B7A4F] font-medium text-xl pt-3">VALUES</h3>
             <p className="text-slate-600 leading-loose">
               Strives to deliver high quality products with :
             </p>
-            <ul className="list-decimal">
-              <li className="text-slate-600 leading-loose">Integrity</li>
-              <li className="text-slate-600 leading-loose">loyalty</li>
-              <li className="text-slate-600 leading-loose">Reliability</li>
-              <li className="text-slate-600 leading-loose">professionalism</li>
+            <ul className="leading-loose">
+              <li className="text-slate-600 py-2">Integrity</li>
+              <li className="text-slate-600 py-2">Loyalty</li>
+              <li className="text-slate-600 py-2">Reliability</li>
+              <li className="text-slate-600 py-2">Professionalism</li>
             </ul>
           </div>
           <div className="md:h-[430px] h-[300px]">
@@ -96,7 +100,7 @@ function page() {
             />
           </div>
           <div>
-            <h3 className="text-[#8B7A4F] font-medium text-xl">
+            <h3 className="text-[#8B7A4F] font-medium text-xl pt-3">
               PARTNERSHIP BENEFITS
             </h3>
             <ul className="leading-loose">

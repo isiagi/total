@@ -11,7 +11,7 @@ function Footer() {
         <div className="min-h-[300px] flex items-center w-full">
           <div className="flex justify-between flex-wrap w-full">
             <div className="max-w-xs">
-              <h3 className="font-bold mb-5">ABOUT US</h3>
+              <h3 className="font-medium mb-5">ABOUT US</h3>
               <p>
                 Total Care, founded in 2022 with headquarters in Portugal, and
                 distributor of wonderful products operating in more than 40
@@ -21,7 +21,7 @@ function Footer() {
               </p>
             </div>
             <div>
-              <h3 className="font-bold mb-5">OUR POLICIES</h3>
+              <h3 className="font-medium mb-5">OUR POLICIES</h3>
               <ul className="list-disc list-inside cursor-pointer">
                 <li className="flex items-center hover:text-[#1e293b]">
                   <TfiControlForward className="mr-2" />
@@ -50,8 +50,8 @@ function Footer() {
               </ul>
             </div>
             <div>
-              <h3 className="font-semibold mb-5">REACH US</h3>
-              <h2>TOTAL CARE EUROPE UNIPESSOAL LDA</h2>
+              <h3 className="font-medium mb-5">REACH US</h3>
+              <p>TOTAL CARE EUROPE UNIPESSOAL LDA</p>
               <span className="flex gap-1 items-center">
                 <FaMap /> AV. D. JOÃO II, N.º 50 - 4º PISO ED.
               </span>
@@ -69,7 +69,7 @@ function Footer() {
               </span>
             </div>
             <div>
-              <h3 className="font-bold mb-5">LATEST NEWS</h3>
+              <h3 className="font-medium mb-5">LATEST NEWS</h3>
               <div className="max-w-[250px]">
                 <Marquee>
                   <p className="max-w-[250px]">

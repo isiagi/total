@@ -122,7 +122,7 @@ function Nav() {
                       className={`${
                         active ? "text-[#628C22]" : "bg-white text-black"
                       } text-base py-1 border-b-[1px] hover:text-[#628C22]`}
-                      href="/"
+                      href="/register"
                     >
                       User Register
                     </MyLink>

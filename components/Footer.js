@@ -4,6 +4,8 @@ import { AiFillPhone, AiTwotoneMail } from "react-icons/ai";
 import { TbWorldWww } from "react-icons/tb";
 import Marquee from "react-fast-marquee";
 
+import Link from "next/link";
+
 function Footer() {
   return (
     <div className="bg-[#489FAF] text-white text-base leading-relaxed">
@@ -23,30 +25,40 @@ function Footer() {
             <div>
               <h3 className="font-medium mb-5">OUR POLICIES</h3>
               <ul className="list-disc list-inside cursor-pointer">
-                <li className="flex items-center hover:text-[#1e293b]">
-                  <TfiControlForward className="mr-2" />
-                  Terms & Conditions
-                </li>
-                <li className="flex items-center hover:text-[#1e293b]">
-                  <TfiControlForward className="mr-2" />
-                  Policy Procedure
-                </li>
-                <li className="flex items-center hover:text-[#1e293b]">
-                  <TfiControlForward className="mr-2" />
-                  Return / Cancellation Policy
-                </li>
-                <li className="flex items-center hover:text-[#1e293b]">
+                <Link href="/policies/terms">
+                  <li className="flex items-center hover:text-slate-600">
+                    <TfiControlForward className="mr-2" />
+                    Terms & Conditions
+                  </li>
+                </Link>
+                <Link href="/policies/policy">
+                  <li className="flex items-center hover:text-slate-600">
+                    <TfiControlForward className="mr-2" />
+                    Policy Procedure
+                  </li>
+                </Link>
+                <Link href="/policies/return">
+                  <li className="flex items-center hover:text-slate-600">
+                    <TfiControlForward className="mr-2" />
+                    Return / Cancellation Policy
+                  </li>
+                </Link>
+                <li className="flex items-center hover:text-slate-600">
                   <TfiControlForward className="mr-2" />
                   Privacy Policy
                 </li>
-                <li className="flex items-center hover:text-[#1e293b]">
-                  <TfiControlForward className="mr-2" />
-                  Pricing Policy
-                </li>
-                <li className="flex items-center hover:text-[#1e293b]">
-                  <TfiControlForward className="mr-2" />
-                  Disclaimer
-                </li>
+                <Link href="/policies/pricing">
+                  <li className="flex items-center hover:text-slate-600">
+                    <TfiControlForward className="mr-2" />
+                    Pricing Policy
+                  </li>
+                </Link>
+                <Link href="/policies/claim">
+                  <li className="flex items-center hover:text-slate-600">
+                    <TfiControlForward className="mr-2" />
+                    Disclaimer
+                  </li>
+                </Link>
               </ul>
             </div>
             <div>
@@ -83,8 +95,8 @@ function Footer() {
         <hr />
         <div>
           <h3 className="text-center py-4">
-            © Copyright 2022. All Rights Reserved By TOTAL CARE EUROPE
-            UNIPESSOAL LDA
+            © Copyright {getCurrentYear()}. All Rights Reserved By TOTAL CARE
+            EUROPE UNIPESSOAL LDA
           </h3>
         </div>
       </div>
@@ -93,3 +105,7 @@ function Footer() {
 }
 
 export default Footer;
+
+function getCurrentYear() {
+  return new Date().getFullYear();
+}

@@ -3,17 +3,17 @@ import React from "react";
 
 function page() {
   return (
-    <div className="pt-[14vh] h-screen bg-orange-100 flex items-center justify-center">
+    <div className="pt-[14vh] h-screen bg-gradient-to-r from-green-400  flex items-center justify-center">
       <div className="bg-white p-8 rounded">
         <div className="text-center">
-          <h3>TOTAL CARE EUROPE UNIPESSOAL LDA</h3>
-          <h3>User Login Panel</h3>
+          <h3 className="text-[#945012] font-medium">TOTAL CARE EUROPE UNIPESSOAL LDA</h3>
+          <h3 className="font-medium text-slate-700">User Login Panel</h3>
         </div>
         <div>
           <form>
             <div className="py-4">
               <div>
-                <label htmlFor="username">Userid / Username</label>
+                <label htmlFor="username" className="text-slate-700">Userid / Username</label>
                 <br />
                 <input
                   type="text"
@@ -24,7 +24,7 @@ function page() {
                 />
               </div>
               <div>
-                <label htmlFor="username">Password</label>
+                <label htmlFor="username" className="text-slate-700">Password</label>
                 <br />
                 <input
                   type="password"
@@ -36,15 +36,17 @@ function page() {
               </div>
             </div>
             <div className="flex justify-center mb-3">
-              <button className="p-2 bg-blue-800 text-white rounded">
-                Login
-              </button>
+              <Link href="/dashboard">
+                <button className="p-2 bg-blue-400 text-white rounded">
+                  Login
+                </button>
+              </Link>
             </div>
             <hr />
-            <p>
+            <p className=" text-slate-700">
               Not registered?{" "}
               <Link href={"/register"}>
-                <span>Register now</span>
+                <span className="text-blue-400">Register now</span>
               </Link>
             </p>
           </form>

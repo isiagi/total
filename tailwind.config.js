@@ -15,6 +15,22 @@ module.exports = {
       gridTemplateColumns: {
         fluid : "repeat(auto-fit, minmax(300px, 1fr))"
       },
+      keyframes: {
+        zoom: {
+          "0%": {
+            transform: "scale(1)",
+          },
+          "50%": {
+            transform: "scale(1.35)",
+          },        
+          "100%": {
+            transform: "scale(1)",
+          },
+        },
+      },
+      animation: {
+        zoom: "zoom 10s ease-in-out linear",
+      },
     },
   },
   plugins: [],

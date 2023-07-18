@@ -14,7 +14,7 @@ function Nav() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="fixed w-full z-10 bg-white opacity-95 md:h-[14vh] h-[12vh] flex justify-between items-center">
+    <div className="fixed w-full z-10 bg-white opacity-95 md:h-[14vh] h-[12vh] flex justify-between items-center shadow shadow-sm">
       <div className="w-full flex justify-between items-center md:px-12 px-2">
         <div className="flex md:w-auto w-full items-center justify-between">
           <Link href="/">

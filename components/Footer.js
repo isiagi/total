@@ -8,7 +8,7 @@ import Link from "next/link";
 
 function Footer() {
   return (
-    <div className="bg-[#489FAF] text-white text-base leading-relaxed">
+    <div className="bg-[#489FAF] text-white text-base leading-relaxed z-10">
       <div className="px-12">
         <div className="min-h-[300px] flex items-center w-full">
           <div className="flex justify-between flex-wrap w-full">

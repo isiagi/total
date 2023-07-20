@@ -180,12 +180,12 @@ const App = () => {
             {select === "stockistrequestproduct" && <StockistRequestProduct />}
             {select === "countrymanagement" && <CountryManagement />}
             {select === "fundrequest" && <FundRequest />}
-            {select && (
+            {/* {select && (
               <TableComponent
                 tableContent={tableContent}
                 tableHead={tableHead}
               />
-            )}
+            )} */}
           </div>
         </Content>
       </Layout>

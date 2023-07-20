@@ -7,6 +7,8 @@ export const columns = [
   {
     title: "Age",
     dataIndex: "age",
+    sorter: (a, b) => a.name.length - b.name.length,
+    sortDirections: ['descend'],
   },
   {
     title: "Address",

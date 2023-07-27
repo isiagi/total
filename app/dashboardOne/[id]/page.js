@@ -14,21 +14,7 @@ import { Button, Layout, Menu, theme } from "antd";
 import TableComponent from "@/components/Table";
 import { columns, data, columns1, data1 } from "@/utils/data";
 
-import UserList from "@/components/dashboard/user_management/UserList";
-import PasswordTracker from "@/components/dashboard/user_management/PasswordTracker";
-import UpdateUserProfile from "@/components/dashboard/user_management/UpdateUserProfile";
-import ManageStockistProduct from "@/components/dashboard/stockist_management/ManageStockistProduct";
-import StockistRequestProduct from "@/components/dashboard/stockist_management/StockistRequest";
-import CountryManagement from "@/components/dashboard/stockist_management/CountryManagement";
-import FundRequest from "@/components/dashboard/fund_request/Table";
-import NewOrder from "@/components/dashboard/order_management/newOrder";
-import Delievered from "@/components/dashboard/order_management/delieveredOrders";
-import Closing from "@/components/dashboard/order_management/delieveredOrders";
-import Rank from "@/components/dashboard/rank_achievers";
-import LeadershipSelf from "@/components/dashboard/report_management/leaderShipself";
-import LeadershipIncome from "@/components/dashboard/report_management/leadershipIncome";
-import Leadership from "@/components/dashboard/report_management/memberPackageReport";
-import Wallet from "@/components/dashboard/manage_wallet";
+
 
 import { useEffect } from "react";
 
@@ -213,20 +199,7 @@ const App = () => {
               background: colorBgContainer,
             }}
           >
-            {select === "userlist" && <UserList />}
-            {select === "passwordtracker" && <PasswordTracker />}
-            {select === "updateuserprofile" && <UpdateUserProfile />}
-            {select === "managestockistproduct" && <ManageStockistProduct />}
-            {select === "stockistrequestproduct" && <StockistRequestProduct />}
-            {select === "countrymanagement" && <CountryManagement />}
-            {select === "fundrequest" && <FundRequest />}
-            {select === "neworder" && <NewOrder />}
-            {select === "orderlist" && <Delievered />}
-            {select === "rank" && <Rank />}
-            {select === "leadershipincome" && <LeadershipIncome />}
-            {select === "leaderself" && <LeadershipSelf />}
-            {select === "memberself" && <Leadership />}
-            {select === "wallet" && <Wallet />}
+
           </div>
         </Content>
       </Layout>

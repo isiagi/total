@@ -31,8 +31,11 @@ import Leadership from "@/components/dashboard/report_management/memberPackageRe
 import Wallet from "@/components/dashboard/manage_wallet";
 
 import { useEffect } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 const { Header, Content, Footer, Sider } = Layout;
+
+const { SubMenu } = Menu;
 
 function getItem(label, key, icon, children) {
   return {
@@ -43,7 +46,9 @@ function getItem(label, key, icon, children) {
   };
 }
 const items = [
-  getItem("Dashboard", "dashboard", <PieChartOutlined />, [`${<a href="/hhgyr" >hel</a>}`]),
+  getItem("Dashboard", "dashboard", <PieChartOutlined />, [
+    `${(<a href="/hhgyr">hel</a>)}`,
+  ]),
   // getItem("Option 2", "2", <DesktopOutlined />),
   getItem("User Management", "sub1", <UserOutlined />, [
     getItem("User List", "userlist"),
@@ -102,40 +107,47 @@ const items = [
 
 const App = () => {
   const [collapsed, setCollapsed] = useState(false);
-  const [select, setSelect] = useState("");
+  const [selectedKey, setSelectedKey] = useState("dashboard");
 
-  const [currentUrl, setCurrentUrl] = useState("/dashboard");
+  const router = useRouter();
 
-  const handleLinkClick = (url) => {
-    setCurrentUrl(url);
-    console.log("====================================");
-    console.log("reloaded");
-    console.log("====================================");
+  // const handleLinkClick = (url) => {
+  //   setCurrentUrl(url);
+  //   console.log("====================================");
+  //   console.log("reloaded");
+  //   console.log("====================================");
+  // };
+  const handleMenuClick = (key) => {
+    setSelectedKey(key);
+    router.push(`/dashboard/?key=${key}`, undefined, { shallow: true });
   };
 
-  useEffect(() => {
-    window.history.pushState({}, null, currentUrl);
+  const searchParams = useSearchParams()
+  const key = searchParams.get('key')
 
-    // Get the updated URL using window.location
-    const updatedUrl = window.location.pathname;
-    window.scrollTo({ top: 0 });
-    console.log("Updated URL:", updatedUrl);
-  }, [currentUrl]);
+  useEffect(() => {
+    // const key = pathname.substring(1); // Remove the leading slash from the pathname
+
+    if (key && key !== "dashboard") {
+      setSelectedKey(key);
+    }
+  }, []);
 
   const {
     token: { colorBgContainer },
   } = theme.useToken();
 
-  let tableContent;
-  let tableHead;
+  // let tableContent;
+  // let tableHead;
 
-  if (select == true) {
-    tableContent = columns;
-    tableHead = data;
-  } else {
-    tableContent = columns1;
-    tableHead = data1;
-  }
+  // if (select == true) {
+  //   tableContent = columns;
+  //   tableHead = data;
+  // } else {
+  //   tableContent = columns1;
+  //   tableHead = data1;
+  // }
+  console.log("===selectedKey===", selectedKey);
 
   return (
     <Layout
@@ -162,15 +174,30 @@ const App = () => {
         {/* <div className="demo-logo-vertical" /> */}
         <div className="demo-logo-vertical" />
         <Menu
-          theme="dark"
-          defaultSelectedKeys={["dashboard"]}
-          mode="inline"
-          items={items}
-          onClick={({ key }) => {
-            setSelect(key);
-            handleLinkClick(key);
-          }}
-        />
+        theme="dark"
+        defaultSelectedKeys={["dashboard"]}
+        mode="inline"
+        selectedKeys={[selectedKey]}
+        onClick={({ key }) => {
+          handleMenuClick(key);
+        }}
+      >
+        {items.map((item) =>
+          item.children ? (
+            <SubMenu key={item.key} icon={item.icon} title={item.label}>
+              {item.children.map((subItem) => (
+                <Menu.Item key={subItem.key} onClick={() => handleMenuClick(subItem.key)}>
+                  {subItem.label}
+                </Menu.Item>
+              ))}
+            </SubMenu>
+          ) : (
+            <Menu.Item key={item.key} icon={item.icon} onClick={() => handleMenuClick(item.key)}>
+              {item.label}
+            </Menu.Item>
+          )
+        )}
+      </Menu>
         {/* <MenuComponent /> */}
       </Sider>
       <Layout>
@@ -179,7 +206,7 @@ const App = () => {
             padding: 0,
             background: colorBgContainer,
             display: "flex",
-            height: "90px"
+            height: "90px",
           }}
         >
           <Button
@@ -194,8 +221,7 @@ const App = () => {
           />
           <div>
             <h2>Dashboard</h2>
-            <p style={{marginTop: '-30px'}}>
-              
+            <p style={{ marginTop: "-30px" }}>
               Welcome VITC_ADMIN into TOTAL CARE EUROPE UNIPESSOAL LDA Admin
               dashboard
             </p>
@@ -213,20 +239,24 @@ const App = () => {
               background: colorBgContainer,
             }}
           >
-            {select === "userlist" && <UserList />}
-            {select === "passwordtracker" && <PasswordTracker />}
-            {select === "updateuserprofile" && <UpdateUserProfile />}
-            {select === "managestockistproduct" && <ManageStockistProduct />}
-            {select === "stockistrequestproduct" && <StockistRequestProduct />}
-            {select === "countrymanagement" && <CountryManagement />}
-            {select === "fundrequest" && <FundRequest />}
-            {select === "neworder" && <NewOrder />}
-            {select === "orderlist" && <Delievered />}
-            {select === "rank" && <Rank />}
-            {select === "leadershipincome" && <LeadershipIncome />}
-            {select === "leaderself" && <LeadershipSelf />}
-            {select === "memberself" && <Leadership />}
-            {select === "wallet" && <Wallet />}
+            {selectedKey === "userlist" && <UserList />}
+            {selectedKey === "passwordtracker" && <PasswordTracker />}
+            {selectedKey === "updateuserprofile" && <UpdateUserProfile />}
+            {selectedKey === "managestockistproduct" && (
+              <ManageStockistProduct />
+            )}
+            {selectedKey === "stockistrequestproduct" && (
+              <StockistRequestProduct />
+            )}
+            {selectedKey === "countrymanagement" && <CountryManagement />}
+            {selectedKey === "fundrequest" && <FundRequest />}
+            {selectedKey === "neworder" && <NewOrder />}
+            {selectedKey === "orderlist" && <Delievered />}
+            {selectedKey === "rank" && <Rank />}
+            {selectedKey === "leadershipincome" && <LeadershipIncome />}
+            {selectedKey === "leaderself" && <LeadershipSelf />}
+            {selectedKey === "memberself" && <Leadership />}
+            {selectedKey === "wallet" && <Wallet />}
           </div>
         </Content>
       </Layout>

@@ -1,7 +1,14 @@
 import React from "react";
 import { Table, Select } from "antd";
+import Link from "next/link";
 
 const { Option } = Select;
+
+const handleLink = (record) => {
+  return (
+    <Link href={`/dashboard/?key=selectuser&action=${'edit'}&id=${record.key}`}>Edit</Link>
+  )
+}
 
 const dataSource = [
   {
@@ -134,7 +141,7 @@ const columns = [
     title: "Edit",
     dataIndex: "edit",
     key: "edit",
-    render: () => <a>Edit</a>,
+    render: (text, record) => handleLink(record),
   },
 ];
 

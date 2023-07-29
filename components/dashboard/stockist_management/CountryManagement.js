@@ -1,5 +1,7 @@
 import React from 'react';
 import { Table } from 'antd';
+import Link from 'next/link'
+
 
 const dataSource = [
   {
@@ -20,6 +22,12 @@ const dataSource = [
   // Add more data objects as needed
 ];
 
+const handleLink = (record) => {
+  return (
+    <Link href={`/dashboard/?key=countrymanagementselect&action=${'edit'}&id=${record.key}`}>Edit</Link>
+  )
+}
+
 const columns = [
   {
     title: 'S.No',
@@ -35,7 +43,7 @@ const columns = [
     title: 'Edit',
     dataIndex: 'edit',
     key: 'edit',
-    render: () => <a>Edit</a>,
+    render: (text, record) => handleLink(record),
   },
 ];
 

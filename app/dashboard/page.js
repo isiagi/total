@@ -1,113 +1,50 @@
 "use client";
 
-import React, { useState } from "react";
-import {
-  DesktopOutlined,
-  FileOutlined,
-  PieChartOutlined,
-  TeamOutlined,
-  UserOutlined,
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-} from "@ant-design/icons";
+import React, { useContext, useLayoutEffect, useState } from "react";
+import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { Button, Layout, Menu, theme } from "antd";
-import TableComponent from "@/components/Table";
-import { columns, data, columns1, data1 } from "@/utils/data";
 
-import UserList from "@/components/dashboard/user_management/UserList";
-import PasswordTracker from "@/components/dashboard/user_management/PasswordTracker";
-import UpdateUserProfile from "@/components/dashboard/user_management/UpdateUserProfile";
-import ManageStockistProduct from "@/components/dashboard/stockist_management/ManageStockistProduct";
-import StockistRequestProduct from "@/components/dashboard/stockist_management/StockistRequest";
-import CountryManagement from "@/components/dashboard/stockist_management/CountryManagement";
-import FundRequest from "@/components/dashboard/fund_request/Table";
-import NewOrder from "@/components/dashboard/order_management/newOrder";
-import Delievered from "@/components/dashboard/order_management/delieveredOrders";
-import Closing from "@/components/dashboard/order_management/delieveredOrders";
-import Rank from "@/components/dashboard/rank_achievers";
-import LeadershipSelf from "@/components/dashboard/report_management/leaderShipself";
-import LeadershipIncome from "@/components/dashboard/report_management/leadershipIncome";
-import Leadership from "@/components/dashboard/report_management/memberPackageReport";
-import Wallet from "@/components/dashboard/manage_wallet";
+import { items } from "./items.js";
+
+import {
+  UserList,
+  PasswordTracker,
+  UpdateUserProfile,
+  ManageStockistProduct,
+  StockistRequestProduct,
+  CountryManagement,
+  FundRequest,
+  NewOrder,
+  Delievered,
+  Rank,
+  LeadershipSelf,
+  LeadershipIncome,
+  Leadership,
+  Wallet,
+  Edit,
+  CreatePin,
+  Fresh,
+  Used,
+  Manage,
+  ChangePassword,
+  ChangeProfilePhoto,
+  Policy
+} from "./dashboardComponents.js";
 
 import { useEffect } from "react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import { AppContext } from "@/context/context";
+import EditUser from "@/components/dashboard/user_management/EditUser.js";
 
 const { Header, Content, Footer, Sider } = Layout;
 
 const { SubMenu } = Menu;
 
-function getItem(label, key, icon, children) {
-  return {
-    key,
-    icon,
-    children,
-    label,
-  };
-}
-const items = [
-  getItem("Dashboard", "dashboard", <PieChartOutlined />, [
-    `${(<a href="/hhgyr">hel</a>)}`,
-  ]),
-  // getItem("Option 2", "2", <DesktopOutlined />),
-  getItem("User Management", "sub1", <UserOutlined />, [
-    getItem("User List", "userlist"),
-    getItem("Password Tracker", "passwordtracker"),
-    getItem("Update User Profile", "updateuserprofile"),
-  ]),
-  getItem("Stockist Management", "sub2", <TeamOutlined />, [
-    getItem("Manage Stockist Product", "managestockistproduct"),
-    getItem("Stockist Requested Product", "stockistrequestproduct"),
-    getItem("Country Management", "countrymanagement"),
-  ]),
-  getItem("Stockist Fund Request Management", "sub3", <UserOutlined />, [
-    getItem("Pending Fund Request", "fundrequest"),
-    getItem("Approved Fund Request", "fundrequest"),
-    getItem("Cancel Fund Request", "fundrequest"),
-  ]),
-  getItem("Stockist Wallet Management", "sub4", <UserOutlined />, [
-    getItem("Manage Wallet", "wallet"),
-  ]),
-  getItem("E Pills Management", "sub5", <UserOutlined />, [
-    getItem("Create E Pin", "12"),
-    getItem("Fresh Pin Request", "13"),
-    getItem("Used E Pin Report", "14"),
-  ]),
-  getItem("User Fund Request Management", "sub6", <UserOutlined />, []),
-  getItem("Report Management", "sub17", <UserOutlined />, [
-    getItem("Leadership Self Income", "leadershipincome"),
-    getItem("Leadership Income", "leaderself"),
-    getItem("Member Package Report", "memberself"),
-  ]),
-  getItem("Rank Achievers", "sub16", <UserOutlined />, [
-    getItem("Rank Wise List", "rank"),
-  ]),
-  getItem("E Wallet Management", "sub7", <UserOutlined />, []),
-  getItem("Settings Management", "sub8", <UserOutlined />, [
-    getItem("Change Password", "19"),
-    getItem("Change Profile Photo", "20"),
-  ]),
-  getItem("Witdrawal Management", "sub9", <UserOutlined />, []),
-  getItem("Closing Management", "sub15", <UserOutlined />, [
-    getItem("Leadership Monthly closing", "closing"),
-  ]),
-  getItem("Query Ticket Management", "sub10", <UserOutlined />, []),
-  getItem("Order Management", "sub14", <UserOutlined />, [
-    getItem("New Order List", "neworder"),
-    getItem("Delievered Order List", "orderlist"),
-  ]),
-  getItem("Product Management", "sub11", <UserOutlined />, []),
-  getItem("Admin Bank Management", "sub12", <UserOutlined />, []),
-  getItem("Policy Content Management", "sub13", <UserOutlined />, [
-    getItem("Change Password", "23"),
-    getItem("Change Profile Photo", "24"),
-    getItem("Policy Content Update", "25"),
-  ]),
-];
-
 const App = () => {
   const [collapsed, setCollapsed] = useState(false);
+  const { url, setUrl } = useContext(AppContext);
   const [selectedKey, setSelectedKey] = useState("dashboard");
+  const [action, setAction] = useState("");
 
   const router = useRouter();
 
@@ -117,36 +54,32 @@ const App = () => {
   //   console.log("reloaded");
   //   console.log("====================================");
   // };
-  const handleMenuClick = (key) => {
+  const handleMenuClick = (key, fx, id) => {
     setSelectedKey(key);
+    setUrl(key);
     router.push(`/dashboard/?key=${key}`, undefined, { shallow: true });
   };
 
-  const searchParams = useSearchParams()
-  const key = searchParams.get('key')
+  const searchParams = useSearchParams();
+  const key = searchParams.get("key");
+  const getId = searchParams.get("id");
+  const getAction = searchParams.get("action");
 
-  useEffect(() => {
+  console.log(getId, getAction);
+
+  useLayoutEffect(() => {
     // const key = pathname.substring(1); // Remove the leading slash from the pathname
 
     if (key && key !== "dashboard") {
       setSelectedKey(key);
+      setUrl(key);
     }
-  }, []);
+  }, [key, setUrl]);
 
   const {
     token: { colorBgContainer },
   } = theme.useToken();
 
-  // let tableContent;
-  // let tableHead;
-
-  // if (select == true) {
-  //   tableContent = columns;
-  //   tableHead = data;
-  // } else {
-  //   tableContent = columns1;
-  //   tableHead = data1;
-  // }
   console.log("===selectedKey===", selectedKey);
 
   return (
@@ -170,43 +103,52 @@ const App = () => {
         }}
         collapsible
         collapsed={collapsed}
+        // style={{ overflow: 'auto', height: '100vh', position: 'sticky', top: 0, left: 0, }}
       >
         {/* <div className="demo-logo-vertical" /> */}
         <div className="demo-logo-vertical" />
         <Menu
-        theme="dark"
-        defaultSelectedKeys={["dashboard"]}
-        mode="inline"
-        selectedKeys={[selectedKey]}
-        onClick={({ key }) => {
-          handleMenuClick(key);
-        }}
-      >
-        {items.map((item) =>
-          item.children ? (
-            <SubMenu key={item.key} icon={item.icon} title={item.label}>
-              {item.children.map((subItem) => (
-                <Menu.Item key={subItem.key} onClick={() => handleMenuClick(subItem.key)}>
-                  {subItem.label}
-                </Menu.Item>
-              ))}
-            </SubMenu>
-          ) : (
-            <Menu.Item key={item.key} icon={item.icon} onClick={() => handleMenuClick(item.key)}>
-              {item.label}
-            </Menu.Item>
-          )
-        )}
-      </Menu>
+          theme="dark"
+          defaultSelectedKeys={["dashboard"]}
+          mode="inline"
+          selectedKeys={[selectedKey]}
+          onClick={({ key }) => {
+            handleMenuClick(key);
+          }}
+        >
+          {items.map((item) =>
+            item.children ? (
+              <SubMenu key={item.key} icon={item.icon} title={item.label}>
+                {item.children.map((subItem) => (
+                  <Menu.Item
+                    key={subItem.key}
+                    onClick={() => handleMenuClick(subItem.key)}
+                  >
+                    {subItem.label}
+                  </Menu.Item>
+                ))}
+              </SubMenu>
+            ) : (
+              <Menu.Item
+                key={item.key}
+                icon={item.icon}
+                onClick={() => handleMenuClick(item.key)}
+              >
+                {item.label}
+              </Menu.Item>
+            )
+          )}
+        </Menu>
         {/* <MenuComponent /> */}
       </Sider>
       <Layout>
         <Header
           style={{
             padding: 0,
-            background: colorBgContainer,
+            background: "#6A6A6A",
             display: "flex",
-            height: "90px",
+            height: "80px",
+            color: "#fff",
           }}
         >
           <Button
@@ -217,11 +159,12 @@ const App = () => {
               fontSize: "16px",
               width: 64,
               height: 64,
+              color: "#fff"
             }}
           />
           <div>
             <h2>Dashboard</h2>
-            <p style={{ marginTop: "-30px" }}>
+            <p style={{ marginTop: "-35px" }}>
               Welcome VITC_ADMIN into TOTAL CARE EUROPE UNIPESSOAL LDA Admin
               dashboard
             </p>
@@ -229,7 +172,8 @@ const App = () => {
         </Header>
         <Content
           style={{
-            margin: "0 16px",
+            margin: "16px 16px",
+            background: "#F1F5F9",
           }}
         >
           <div
@@ -239,16 +183,22 @@ const App = () => {
               background: colorBgContainer,
             }}
           >
-            {selectedKey === "userlist" && <UserList />}
+            {key === "selectuser" && getAction === "edit" && (<EditUser />)}
+            {key === "managewallet" && getAction === "manage" && (<Manage />)}
+            {url === "userlist" && <UserList />}
             {selectedKey === "passwordtracker" && <PasswordTracker />}
             {selectedKey === "updateuserprofile" && <UpdateUserProfile />}
             {selectedKey === "managestockistproduct" && (
               <ManageStockistProduct />
             )}
+            
             {selectedKey === "stockistrequestproduct" && (
               <StockistRequestProduct />
             )}
-            {selectedKey === "countrymanagement" && <CountryManagement />}
+            {key === "countrymanagementselect" && getAction === "edit" && (
+              <Edit />
+            )}
+            {key === "countrymanagement" && <CountryManagement />}
             {selectedKey === "fundrequest" && <FundRequest />}
             {selectedKey === "neworder" && <NewOrder />}
             {selectedKey === "orderlist" && <Delievered />}
@@ -257,6 +207,12 @@ const App = () => {
             {selectedKey === "leaderself" && <LeadershipSelf />}
             {selectedKey === "memberself" && <Leadership />}
             {selectedKey === "wallet" && <Wallet />}
+            {selectedKey === "createpin" && <CreatePin />}
+            {selectedKey === "freshpin" && <Fresh />}
+            {selectedKey === "usedpin" && <Used />}
+            {selectedKey === "changepassword" && <ChangePassword />}
+            {selectedKey === "changeprofilephoto" && <ChangeProfilePhoto />}
+            {selectedKey === "policy" && <Policy />}
           </div>
         </Content>
       </Layout>

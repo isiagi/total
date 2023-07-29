@@ -1,6 +1,13 @@
 import React from 'react';
 import { Table, Button } from 'antd';
 import TableComponent from "@/components/TableComponent";
+import Link from 'next/link';
+
+const handleLink = (record) => {
+  return (
+    <Link href={`/dashboard/?key=selectuser&action=${'edit'}&id=${record.key}`}>Edit</Link>
+  )
+}
 
 const dataSource = [
   {
@@ -52,7 +59,7 @@ const columns = [
     title: 'Manage Fund',
     dataIndex: 'manageFund',
     key: 'manageFund',
-    render: () => <Button type="primary">Manage</Button>,
+    render: (text, record) => <Link href={`/dashboard/?key=managewallet&action=${'manage'}&id=${record.key}`}><Button className='bg-blue-500' type="primary">Manage</Button></Link>,
   },
 ];
 

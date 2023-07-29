@@ -90,7 +90,7 @@ const App = () => {
   const [collapsed, setCollapsed] = useState(false);
   const [select, setSelect] = useState("");
 
-  const [currentUrl, setCurrentUrl] = useState("/dashboard");
+  const [currentUrl, setCurrentUrl] = useState("/dashboardOne");
 
   const handleLinkClick = (url) => {
     setCurrentUrl(url);

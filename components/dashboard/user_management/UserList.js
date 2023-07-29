@@ -3,6 +3,12 @@ import { Table } from "antd";
 import Link from "next/link";
 import TableComponent from "@/components/TableComponent";
 
+const handleLink = (record) => {
+  return (
+    <Link href={`/dashboard/?key=selectuser&action=${'edit'}&id=${record.key}`}>Edit</Link>
+  )
+}
+
 const dataSource = [
   {
     key: "1",
@@ -129,7 +135,7 @@ const columns = [
     title: "Edit",
     dataIndex: "edit",
     key: "edit",
-    render: () => <a>Edit</a>,
+    render: (text, record) => handleLink(record),
   },
   {
     title: "Action",

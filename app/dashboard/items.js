@@ -2,6 +2,9 @@ import {
     PieChartOutlined,
     TeamOutlined,
     UserOutlined,
+    SettingOutlined,
+    FileOutlined,
+    ShoppingCartOutlined
   } from "@ant-design/icons";
 
 function getItem(label, key, icon, children) {
@@ -50,7 +53,7 @@ export const items = [
     getItem("Rank Achievers", "sub16", <UserOutlined />, [
       getItem("Rank Wise List", "rank"),
     ]),
-    getItem("E Wallet Management", "sub7", <UserOutlined />, []),
+    getItem("E Wallet Management", "sub7", <SettingOutlined />, []),
     getItem("Settings Management", "sub8", <UserOutlined />, [
       getItem("Change Password", "changepassword"),
       getItem("Change Profile Photo", "changeprofilephoto"),
@@ -60,13 +63,13 @@ export const items = [
       getItem("Leadership Monthly closing", "closing"),
     ]),
     getItem("Query Ticket Management", "sub10", <UserOutlined />, []),
-    getItem("Order Management", "sub14", <UserOutlined />, [
+    getItem("Order Management", "sub14", <ShoppingCartOutlined />, [
       getItem("New Order List", "neworder"),
       getItem("Delievered Order List", "orderlist"),
     ]),
-    getItem("Product Management", "sub11", <UserOutlined />, []),
-    getItem("Admin Bank Management", "sub12", <UserOutlined />, []),
-    getItem("Policy Content Management", "sub13", <UserOutlined />, [
+    getItem("Product Management", "sub11", <ShoppingCartOutlined />, []),
+    getItem("Admin Bank Management", "sub12", <ShoppingCartOutlined />, []),
+    getItem("Policy Content Management", "sub13", <FileOutlined />, [
       getItem("Change Password", "changepassword"),
       getItem("Change Profile Photo", "changeprofilephoto"),
       getItem("Policy Content Update", "policy"),

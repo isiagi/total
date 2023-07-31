@@ -16,14 +16,14 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <AppContextProvider>
-      <html lang="en">
-        <body className={`${inter.className}`}>
+    <html lang="en">
+      <body className={`${inter.className}`}>
+        <AppContextProvider>
           <Nav />
           {children}
           <Footer />
-        </body>
-      </html>
-    </AppContextProvider>
+        </AppContextProvider>
+      </body>
+    </html>
   );
 }

@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import React, { useState } from 'react';
-import { Divider, Radio, Table } from 'antd';
+import React, { useState } from "react";
+import { Divider, Radio, Table } from "antd";
 
 // rowSelection object indicates the need for row selection
 // const rowSelection = {
@@ -14,11 +14,9 @@ import { Divider, Radio, Table } from 'antd';
 //     name: record.name,
 //   }),
 // };
-const App = ({tableHead, tableContent}) => {
-  
+const App = ({ tableHead, tableContent }) => {
   return (
     <div>
-      
       <Table
         // rowSelection={{
         //   type: "checkbox",
@@ -26,7 +24,10 @@ const App = ({tableHead, tableContent}) => {
         // }}
         columns={tableContent}
         dataSource={tableHead}
-        scroll={{x: true, y: true}}
+        scroll={{
+          x: 1500,
+          y: 300,
+        }}
       />
     </div>
   );

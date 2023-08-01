@@ -1,5 +1,13 @@
 import React from "react";
 import { Table } from "antd";
+import Link from "next/link";
+import TableComponent from "@/components/TableComponent";
+
+const handleLink = (record) => {
+  return (
+    <Link href={`/dashboard/?key=selectuser&action=${'edit'}&id=${record.key}`}>Edit</Link>
+  )
+}
 
 const dataSource = [
   {
@@ -63,6 +71,10 @@ const columns = [
     title: "User ID",
     dataIndex: "userID",
     key: "userID",
+    render: (text, record) => (
+      // Use Link to create a link with the email as the URL parameter
+      <Link href={`/dashboardOne/${record.sNo}`}>{text}</Link>
+    ),
   },
   {
     title: "Username",
@@ -123,7 +135,7 @@ const columns = [
     title: "Edit",
     dataIndex: "edit",
     key: "edit",
-    render: () => <a>Edit</a>,
+    render: (text, record) => handleLink(record),
   },
   {
     title: "Action",
@@ -135,13 +147,18 @@ const columns = [
 
 const MyTable = () => {
   return (
-    <Table
+    // <Table
+    //   dataSource={dataSource}
+    //   columns={columns}
+    //   scroll={{
+    //     x: 1500,
+    //     y: 300,
+    //   }}
+    // />
+    <TableComponent
       dataSource={dataSource}
       columns={columns}
-      scroll={{
-        x: 1500,
-        y: 300,
-      }}
+      
     />
   );
 };

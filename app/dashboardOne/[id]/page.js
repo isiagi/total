@@ -35,6 +35,12 @@ import UpdateProfile from "@/components/dashboardOne/my_project/UpdateProfile";
 import UpdateBankInfo from "@/components/dashboardOne/my_project/UpdateBankInfo";
 import UpdateNominee from "@/components/dashboardOne/my_project/UpdateNominee";
 import UpdatePassword from "@/components/dashboardOne/my_project/UpdatePassword";
+import PersonalBonus from "@/components/dashboardOne/bonus_report/PersonalBonus"
+import LevelBonus from "@/components/dashboardOne/bonus_report/LevelBonus"
+import MatchingBonus from "@/components/dashboardOne/bonus_report/MatchingBonus"
+import LeadershipSelfBonus from "@/components/dashboardOne/bonus_report/LeadershipSelfBonus"
+import LeadershipBonus from "@/components/dashboardOne/bonus_report/LeaderBonus"
+import OpenTicket from "@/components/dashboardOne/grievance/OpenTicket";
  
 const { SubMenu } = Menu;
 
@@ -93,11 +99,11 @@ const items = [
     getItem("New SV Report", "rank"),
   ]),
   getItem("Bonus Reports", "sub7", <UserOutlined />, [
-    getItem("Personal Sale Bonus", "rank"),
-    getItem("Level Bonus", "rank"),
-    getItem("Matching Bonus", "rank"),
-    getItem("Leadership Self Bonus", "rank"),
-    getItem("Leader Bonus", "rank"),
+    getItem("Personal Sale Bonus", "personal_bonus"),
+    getItem("Level Bonus", "level_bonus"),
+    getItem("Matching Bonus", "match_bonus"),
+    getItem("Leadership Self Bonus", "leadership_self_bonus"),
+    getItem("Leadership Bonus", "leadership_bonus"),
   ]),
   getItem("My Rank", "sub8", <UserOutlined />),
   getItem("EShop Invoice", "sub9", <UserOutlined />),
@@ -106,12 +112,12 @@ const items = [
     getItem("Referral Link", "closing"),
   ]),
   getItem("Grievance/Request", "sub10", <UserOutlined />, [
-    getItem("Open Ticket", "neworder"),
-    getItem("View Response", "neworder"),
+    getItem("Open Ticket", "open_ticket"),
+    getItem("View Response", "neworde"),
     getItem("Close Ticket", "neworder"),
   ]),
   getItem("Policy Secton", "sub14", <UserOutlined />, [
-    getItem("Terms & Conditions", "neworder"),
+    getItem("Terms & Conditions", "neworer"),
   ]),
 ];
 
@@ -282,6 +288,12 @@ const App = () => {
             {key === "update_bank_info" && <UpdateBankInfo />}
             {key === "update_nominee" && <UpdateNominee />}
             {key === "update_password" && <UpdatePassword />}
+            {key === "personal_bonus" && <PersonalBonus />}
+            {key === "level_bonus" && <LevelBonus />}
+            {key === "match_bonus" && <MatchingBonus />}
+            {key === "leadership_self_bonus" && <LeadershipSelfBonus />}
+            {key === "leadership_bonus" && <LeadershipBonus />}
+            {key === "open_ticket" && <OpenTicket />}
           </div>
         </Content>
       </Layout>

@@ -28,7 +28,7 @@ import {
   Manage,
   ChangePassword,
   ChangeProfilePhoto,
-  Policy
+  Policy,
 } from "./dashboardComponents.js";
 
 import { useEffect } from "react";
@@ -117,7 +117,9 @@ const App = () => {
           }}
         >
           {items.map((item) =>
-            item.children ? (
+            item.type === "heading" ? ( // Render heading section as separator
+              <Menu.ItemGroup key={item.key} title={item.label} />
+            ) : item.children ? (
               <SubMenu key={item.key} icon={item.icon} title={item.label}>
                 {item.children.map((subItem) => (
                   <Menu.Item
@@ -159,7 +161,7 @@ const App = () => {
               fontSize: "16px",
               width: 64,
               height: 64,
-              color: "#fff"
+              color: "#fff",
             }}
           />
           <div>
@@ -183,15 +185,15 @@ const App = () => {
               background: colorBgContainer,
             }}
           >
-            {key === "selectuser" && getAction === "edit" && (<EditUser />)}
-            {key === "managewallet" && getAction === "manage" && (<Manage />)}
+            {key === "selectuser" && getAction === "edit" && <EditUser />}
+            {key === "managewallet" && getAction === "manage" && <Manage />}
             {url === "userlist" && <UserList />}
             {selectedKey === "passwordtracker" && <PasswordTracker />}
             {selectedKey === "updateuserprofile" && <UpdateUserProfile />}
             {selectedKey === "managestockistproduct" && (
               <ManageStockistProduct />
             )}
-            
+
             {selectedKey === "stockistrequestproduct" && (
               <StockistRequestProduct />
             )}

@@ -1,10 +1,14 @@
 import {
-  PieChartOutlined,
+  DashboardOutlined,
   TeamOutlined,
   UserOutlined,
-  SettingOutlined,
-  FileOutlined,
-  ShoppingCartOutlined,
+  SoundOutlined,
+  BulbOutlined,
+  WalletOutlined,
+  BookOutlined,
+  CreditCardOutlined,
+  FileDoneOutlined,
+  LinkOutlined
 } from "@ant-design/icons";
 
 function getItem(label, key, icon, children, type) {
@@ -23,19 +27,20 @@ export const items = [
     key: "grp",
     type: "heading",
   },
-  getItem("Dashboard", "dashboard", <PieChartOutlined />),
-  getItem("Products", "products", <UserOutlined />),
-  getItem("Users", "sub2", <TeamOutlined />),
+  getItem("Dashboard", "dashboard", <DashboardOutlined />),
+  getItem("Products", "products", <BulbOutlined />),
+  getItem("Users", "users", <TeamOutlined />),
   getItem("Client Profiles", "sub3", <UserOutlined />),
-  getItem("Stockists", "sub4", <UserOutlined />, [
-    getItem("Manage Wallet", "wallet"),
+  getItem("Stockists", "sub4", <TeamOutlined />, [
+    getItem("Manage Stockist", "wallet"),
+    getItem("Add Stockist", "add_stockist"),
   ]),
   {
     label: "WALLETS",
     key: "sub17",
     type: "heading",
   },
-  getItem("My Wallets", "sub5", <UserOutlined />, [
+  getItem("My Wallets", "sub5", <WalletOutlined />, [
     getItem("Bonus Wallets", "bonus_wallet"),
     getItem("Shopping Wallet", "shopping_wallet"),
     getItem("Wallet Withdraw", "wallet_withdraw"),
@@ -47,14 +52,14 @@ export const items = [
     key: "sub90",
     type: "heading",
   },
-  getItem("Bonus Reports", "sub5", <UserOutlined />, [
+  getItem("Bonus Reports", "sub5", <BookOutlined />, [
     getItem("Create E Pin", "createpin"),
     getItem("Fresh Pin Request", "freshpin"),
     getItem("Used E Pin Report", "usedpin"),
   ]),
-  getItem("My Rank", "sub6", <UserOutlined />),
-  getItem("EShop Invoice", "sub16", <UserOutlined />),
-  getItem("Announcements", "sub7", <SettingOutlined />),
-  getItem("Referral Link", "sub8", <UserOutlined />),
+  getItem("My Rank", "sub6", <CreditCardOutlined />),
+  getItem("EShop Invoice", "sub16", <FileDoneOutlined />),
+  getItem("Announcements", "sub7", <SoundOutlined />),
+  getItem("Referral Link", "referral", <LinkOutlined />),
   // ... rest of the items
 ];

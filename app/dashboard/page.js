@@ -6,37 +6,19 @@ import { Button, Layout, Menu, theme } from "antd";
 
 import { items } from "./items.js";
 
-import {
-  UserList,
-  PasswordTracker,
-  UpdateUserProfile,
-  ManageStockistProduct,
-  StockistRequestProduct,
-  CountryManagement,
-  FundRequest,
-  NewOrder,
-  Delievered,
-  Rank,
-  LeadershipSelf,
-  LeadershipIncome,
-  Leadership,
-  Wallet,
-  Edit,
-  CreatePin,
-  Fresh,
-  Used,
-  Manage,
-  ChangePassword,
-  ChangeProfilePhoto,
-  Policy,
-} from "./dashboardComponents.js";
+import { UserList, Manage } from "./dashboardComponents.js";
 
-import { useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { AppContext } from "@/context/context";
 import EditUser from "@/components/dashboard/user_management/EditUser.js";
+import Dashboard from "@/components/new_dashboard/dashboard/Dashboard.js";
+import Product from "@/components/new_dashboard/product/Product.js";
+import User from "@/components/new_dashboard/users/Users.js";
+import AddStockist from "@/components/new_dashboard/stockist/AddStockist.js";
+import GenerateLink from "@/components/new_dashboard/referral/GenerateLink.js";
+import Image from "next/image";
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Content, Sider } = Layout;
 
 const { SubMenu } = Menu;
 
@@ -108,7 +90,6 @@ const App = () => {
         {/* <div className="demo-logo-vertical" /> */}
         <div className="demo-logo-vertical" />
         <Menu
-          theme="dark"
           defaultSelectedKeys={["dashboard"]}
           mode="inline"
           selectedKeys={[selectedKey]}
@@ -147,12 +128,15 @@ const App = () => {
         <Header
           style={{
             padding: 0,
-            background: "#6A6A6A",
+            background: "#fff",
             display: "flex",
             height: "80px",
-            color: "#fff",
+            alignItems: "center",
+            justifyContent: "space-between"
           }}
         >
+        <div className="flex">
+
           <Button
             type="text"
             icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
@@ -161,15 +145,27 @@ const App = () => {
               fontSize: "16px",
               width: 64,
               height: 64,
-              color: "#fff",
+              color: "#475569",
             }}
           />
           <div>
-            <h2>Dashboard</h2>
-            <p style={{ marginTop: "-35px" }}>
+            <p>
               Welcome VITC_ADMIN into TOTAL CARE EUROPE UNIPESSOAL LDA Admin
               dashboard
             </p>
+          </div>
+        </div>
+          <div className="flex items-center gap-5 md:mr-3">
+            <h2>Geofrey Isiagi</h2>
+            <Image
+              src={
+                "https://images.unsplash.com/photo-1543512214-318c7553f230?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHByb2R1Y3R8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+              }
+              alt=""
+              className="w-[50px] rounded-full object-cover h-[50px] bg-center"
+              width={20}
+              height={20}
+            />
           </div>
         </Header>
         <Content
@@ -188,33 +184,13 @@ const App = () => {
             {key === "selectuser" && getAction === "edit" && <EditUser />}
             {key === "managewallet" && getAction === "manage" && <Manage />}
             {url === "userlist" && <UserList />}
-            {selectedKey === "passwordtracker" && <PasswordTracker />}
-            {selectedKey === "updateuserprofile" && <UpdateUserProfile />}
-            {selectedKey === "managestockistproduct" && (
-              <ManageStockistProduct />
-            )}
+            {selectedKey === "dashboard" && <Dashboard />}
+            {selectedKey === "products" && <Product />}
+            {selectedKey === "users" && <User />}
 
-            {selectedKey === "stockistrequestproduct" && (
-              <StockistRequestProduct />
-            )}
-            {key === "countrymanagementselect" && getAction === "edit" && (
-              <Edit />
-            )}
-            {key === "countrymanagement" && <CountryManagement />}
-            {selectedKey === "fundrequest" && <FundRequest />}
-            {selectedKey === "neworder" && <NewOrder />}
-            {selectedKey === "orderlist" && <Delievered />}
-            {selectedKey === "rank" && <Rank />}
-            {selectedKey === "leadershipincome" && <LeadershipIncome />}
-            {selectedKey === "leaderself" && <LeadershipSelf />}
-            {selectedKey === "memberself" && <Leadership />}
-            {selectedKey === "wallet" && <Wallet />}
-            {selectedKey === "createpin" && <CreatePin />}
-            {selectedKey === "freshpin" && <Fresh />}
-            {selectedKey === "usedpin" && <Used />}
-            {selectedKey === "changepassword" && <ChangePassword />}
-            {selectedKey === "changeprofilephoto" && <ChangeProfilePhoto />}
-            {selectedKey === "policy" && <Policy />}
+            {selectedKey === "add_stockist" && <AddStockist />}
+
+            {key === "referral" && <GenerateLink />}
           </div>
         </Content>
       </Layout>

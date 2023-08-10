@@ -86,6 +86,7 @@ const App = () => {
         collapsible
         collapsed={collapsed}
         // style={{ overflow: 'auto', height: '100vh', position: 'sticky', top: 0, left: 0, }}
+        style={{  background: colorBgContainer  }}
       >
         {/* <div className="demo-logo-vertical" /> */}
         <div className="demo-logo-vertical" />

@@ -136,7 +136,7 @@ function Page() {
           <hr />
           <p className=" text-slate-700">
             Not registered?{" "}
-            <Link href={"/register"}>
+            <Link href={"/signUp"}>
               <span className="text-blue-400">Register now</span>
             </Link>
           </p>

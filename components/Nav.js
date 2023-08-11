@@ -268,7 +268,7 @@ function Nav() {
                           ? "bg-blue-500 text-white"
                           : "bg-white text-black"
                       } text-sm py-1 border-b-[1px]`}
-                      href="/register"
+                      href="/signUp"
                       onClick={() => setOpen(false)}
                     >
                       User Register

@@ -17,6 +17,12 @@ import User from "@/components/new_dashboard/users/Users.js";
 import AddStockist from "@/components/new_dashboard/stockist/AddStockist.js";
 import GenerateLink from "@/components/new_dashboard/referral/GenerateLink.js";
 import Image from "next/image";
+import Order from "@/components/new_dashboard/product/Order.js";
+import Treez from "@/components/new_dashboard/tree/Tree.js";
+import TreeChart from "@/components/new_dashboard/tree/TreeChart.js";
+import BonusWallet from "@/components/new_dashboard/wallet/BonusWallet.js";
+import ShoppingWallet from "@/components/new_dashboard/wallet/ShoppingWallet.js";
+import TransferFunds from "@/components/new_dashboard/wallet/TransferFunds.js";
 
 const { Header, Content, Sider } = Layout;
 
@@ -48,6 +54,11 @@ const App = () => {
   const getAction = searchParams.get("action");
 
   console.log(getId, getAction);
+
+  const user = {
+    id: 1,
+    role: "admin",
+  };
 
   useLayoutEffect(() => {
     // const key = pathname.substring(1); // Remove the leading slash from the pathname
@@ -86,7 +97,7 @@ const App = () => {
         collapsible
         collapsed={collapsed}
         // style={{ overflow: 'auto', height: '100vh', position: 'sticky', top: 0, left: 0, }}
-        style={{  background: colorBgContainer  }}
+        style={{ background: colorBgContainer }}
       >
         {/* <div className="demo-logo-vertical" /> */}
         <div className="demo-logo-vertical" />
@@ -98,9 +109,16 @@ const App = () => {
             handleMenuClick(key);
           }}
         >
+          {/* {user?.role === "admin" && item.key === "admin" && (
+              <Menu.Item key={item.key} icon={item.icon}>
+                {item.label}
+              </Menu.Item>
+            )} */}
           {items.map((item) =>
-            item.type === "heading" ? ( // Render heading section as separator
-              <Menu.ItemGroup key={item.key} title={item.label} />
+            item.key === "admin" && user?.role === "admin" ? ( // Render heading section as separator
+              <Menu.Item key={item.key} icon={item.icon}>
+                {item.label}
+              </Menu.Item>
             ) : item.children ? (
               <SubMenu key={item.key} icon={item.icon} title={item.label}>
                 {item.children.map((subItem) => (
@@ -133,29 +151,28 @@ const App = () => {
             display: "flex",
             height: "80px",
             alignItems: "center",
-            justifyContent: "space-between"
+            justifyContent: "space-between",
           }}
         >
-        <div className="flex">
-
-          <Button
-            type="text"
-            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-            onClick={() => setCollapsed(!collapsed)}
-            style={{
-              fontSize: "16px",
-              width: 64,
-              height: 64,
-              color: "#475569",
-            }}
-          />
-          <div>
-            <p>
-              Welcome VITC_ADMIN into TOTAL CARE EUROPE UNIPESSOAL LDA Admin
-              dashboard
-            </p>
+          <div className="flex">
+            <Button
+              type="text"
+              icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+              onClick={() => setCollapsed(!collapsed)}
+              style={{
+                fontSize: "16px",
+                width: 64,
+                height: 64,
+                color: "#475569",
+              }}
+            />
+            <div>
+              <p>
+                Welcome VITC_ADMIN into TOTAL CARE EUROPE UNIPESSOAL LDA Admin
+                dashboard
+              </p>
+            </div>
           </div>
-        </div>
           <div className="flex items-center gap-5 md:mr-3">
             <h2>Geofrey Isiagi</h2>
             <Image
@@ -190,6 +207,11 @@ const App = () => {
             {selectedKey === "users" && <User />}
 
             {selectedKey === "add_stockist" && <AddStockist />}
+            {selectedKey === "order" && <Order />}
+            {selectedKey === "my_network" && <TreeChart />}
+            {selectedKey === "bonus_wallet" && <BonusWallet />}
+            {selectedKey === "shopping_wallet" && <ShoppingWallet />}
+            {selectedKey === "Transfer_funds" && <TransferFunds />}
 
             {key === "referral" && <GenerateLink />}
           </div>

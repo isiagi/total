@@ -7,6 +7,7 @@ import BankDetails from "./bankDetails/BankDetails";
 import AddressDetails from "./addressDetails/AddressDetails";
 import NextOfKind from "./nextOfKind/NextOfKind";
 import Client from "./client/Client";
+import { useRouter } from "next/navigation";
 
 const client = false;
 
@@ -23,9 +24,6 @@ let steps = [
     title: "Addresses (Billing)",
     content: <AddressDetails />,
   },
-];
-
-const steps2 = [
   {
     title: "Client Profile",
     content: <Client />,
@@ -39,16 +37,12 @@ const steps2 = [
 const App = () => {
   const { token } = theme.useToken();
   const [current, setCurrent] = useState(0);
-  const [more, setMore] = useState(false);
+
+  const router = useRouter();
 
   let stepz;
 
-  if (more) {
-    stepz = [...steps, ...steps2];
-  } else {
-    stepz = []
-    stepz = steps;
-  }
+  stepz = steps;
 
   const next = () => {
     setCurrent(current + 1);
@@ -76,17 +70,6 @@ const App = () => {
         <h2 className="text-xl text-slate-700">Total Care Registration</h2>
       </div>
       <div>
-        <p>Register as client</p>
-        <input
-          type="checkbox"
-          name=""
-          id=""
-          onChange={() => {
-            setMore((prev) => !prev);
-          }}
-        />
-      </div>
-      <div>
         <div style={{ padding: "0 2rem" }}>
           <Steps current={current} items={items} />
         </div>
@@ -109,7 +92,11 @@ const App = () => {
           {current === stepz.length - 1 && (
             <Button
               type="primary"
-              onClick={() => message.success("Processing complete!")}
+              style={{ backgroundColor: "blue" }}
+              onClick={() => {
+                message.success("Processing complete!");
+                router.push("/dashboard");
+              }}
             >
               Done
             </Button>

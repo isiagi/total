@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useContext, useLayoutEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { Button, Layout, Menu, theme } from "antd";
 
@@ -60,7 +60,7 @@ const App = () => {
     role: "admin",
   };
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     // const key = pathname.substring(1); // Remove the leading slash from the pathname
 
     if (key && key !== "dashboard") {

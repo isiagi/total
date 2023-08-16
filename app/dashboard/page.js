@@ -197,7 +197,7 @@ const App = () => {
             {key === "selectuser" && getAction === "edit" && <EditUser />}
             {key === "managewallet" && getAction === "manage" && <Manage />}
             {url === "userlist" && <UserList />}
-            {selectedKey === "dashboard" && <Dashboard />}
+            {/* {selectedKey === "dashboard" && <Dashboard />} */}
             {selectedKey === "products" && <Product />}
             {selectedKey === "users" && <User />}
 

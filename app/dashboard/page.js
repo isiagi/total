@@ -10,7 +10,7 @@ import { UserList, Manage } from "./dashboardComponents.js";
 
 import { useRouter, useSearchParams } from "next/navigation";
 import { AppContext } from "@/context/context";
-import EditUser from "@/components/dashboard/user_management/EditUser.js";
+// import EditUser from "@/components/dashboard/user_management/EditUser.js";
 import Dashboard from "@/components/new_dashboard/dashboard/Dashboard.js";
 import Product from "@/components/new_dashboard/product/Product.js";
 import User from "@/components/new_dashboard/users/Users.js";
@@ -18,10 +18,10 @@ import AddStockist from "@/components/new_dashboard/stockist/AddStockist.js";
 import GenerateLink from "@/components/new_dashboard/referral/GenerateLink.js";
 import Image from "next/image";
 import Order from "@/components/new_dashboard/product/Order.js";
-import TreeChart from "@/components/new_dashboard/tree/TreeChart.js";
-import BonusWallet from "@/components/new_dashboard/wallet/BonusWallet.js";
-import ShoppingWallet from "@/components/new_dashboard/wallet/ShoppingWallet.js";
-import TransferFunds from "@/components/new_dashboard/wallet/TransferFunds.js";
+// import TreeChart from "@/components/new_dashboard/tree/TreeChart.js";
+// import BonusWallet from "@/components/new_dashboard/wallet/BonusWallet.js";
+// import ShoppingWallet from "@/components/new_dashboard/wallet/ShoppingWallet.js";
+// import TransferFunds from "@/components/new_dashboard/wallet/TransferFunds.js";
 
 const { Header, Content, Sider } = Layout;
 
@@ -194,19 +194,19 @@ const App = () => {
               background: colorBgContainer,
             }}
           >
-            {key === "selectuser" && getAction === "edit" && <EditUser />}
+            {/* {key === "selectuser" && getAction === "edit" && <EditUser />} */}
             {key === "managewallet" && getAction === "manage" && <Manage />}
             {url === "userlist" && <UserList />}
-            {/* {selectedKey === "dashboard" && <Dashboard />} */}
+            {selectedKey === "dashboard" && <Dashboard />}
             {selectedKey === "products" && <Product />}
             {selectedKey === "users" && <User />}
 
             {selectedKey === "add_stockist" && <AddStockist />}
             {selectedKey === "order" && <Order />}
-            {selectedKey === "my_network" && <TreeChart />}
+            {/* {selectedKey === "my_network" && <TreeChart />}
             {selectedKey === "bonus_wallet" && <BonusWallet />}
             {selectedKey === "shopping_wallet" && <ShoppingWallet />}
-            {selectedKey === "Transfer_funds" && <TransferFunds />}
+            {selectedKey === "Transfer_funds" && <TransferFunds />} */}
 
             {key === "referral" && <GenerateLink />}
           </div>

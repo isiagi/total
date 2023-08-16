@@ -18,7 +18,7 @@ import AddStockist from "@/components/new_dashboard/stockist/AddStockist.js";
 import GenerateLink from "@/components/new_dashboard/referral/GenerateLink.js";
 import Image from "next/image";
 import Order from "@/components/new_dashboard/product/Order.js";
-// import TreeChart from "@/components/new_dashboard/tree/TreeChart.js";
+import TreeChart from "@/components/new_dashboard/tree/TreeChart.js";
 import BonusWallet from "@/components/new_dashboard/wallet/BonusWallet.js";
 import ShoppingWallet from "@/components/new_dashboard/wallet/ShoppingWallet.js";
 import TransferFunds from "@/components/new_dashboard/wallet/TransferFunds.js";

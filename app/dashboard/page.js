@@ -114,11 +114,7 @@ const App = () => {
               </Menu.Item>
             )} */}
           {items.map((item) =>
-            item.key === "admin" && user?.role === "admin" ? ( // Render heading section as separator
-              <Menu.Item key={item.key} icon={item.icon}>
-                {item.label}
-              </Menu.Item>
-            ) : item.children ? (
+            item.children ? (
               <SubMenu key={item.key} icon={item.icon} title={item.label}>
                 {item.children.map((subItem) => (
                   <Menu.Item

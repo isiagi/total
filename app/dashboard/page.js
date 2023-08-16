@@ -6,7 +6,7 @@ import { Button, Layout, Menu, theme } from "antd";
 
 import { items } from "./items.js";
 
-import { UserList, Manage } from "./dashboardComponents.js";
+// import { UserList, Manage } from "./dashboardComponents.js";
 
 import { useRouter, useSearchParams } from "next/navigation";
 import { AppContext } from "@/context/context";
@@ -195,8 +195,8 @@ const App = () => {
             }}
           >
             {/* {key === "selectuser" && getAction === "edit" && <EditUser />} */}
-            {key === "managewallet" && getAction === "manage" && <Manage />}
-            {url === "userlist" && <UserList />}
+            {/* {key === "managewallet" && getAction === "manage" && <Manage />} */}
+            {/* {url === "userlist" && <UserList />} */}
             {selectedKey === "dashboard" && <Dashboard />}
             {selectedKey === "products" && <Product />}
             {selectedKey === "users" && <User />}
